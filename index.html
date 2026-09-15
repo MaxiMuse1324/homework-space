@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Мои задания</title>
+  <meta name="theme-color" content="#111318" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">STUDY SPACE</p>
+        <h1>Мои задания</h1>
+      </div>
+      <button id="logoutBtn" class="ghost-btn hidden" title="Выйти">↪</button>
+    </header>
+
+    <main>
+      <section id="authView" class="auth-card">
+        <h2 id="authTitle">Войти</h2>
+        <p class="muted">Твои задания будут синхронизироваться между устройствами.</p>
+        <form id="authForm">
+          <label>Email<input id="email" type="email" required placeholder="you@example.com"></label>
+          <label>Пароль<input id="password" type="password" minlength="6" required placeholder="••••••••"></label>
+          <button class="primary" type="submit" id="authSubmit">Войти</button>
+        </form>
+        <button id="toggleAuth" class="text-btn">Нет аккаунта? Зарегистрироваться</button>
+        <p id="authMessage" class="message"></p>
+      </section>
+
+      <section id="tasksView" class="hidden">
+        <div class="toolbar">
+          <div class="filters">
+            <button class="filter active" data-filter="all">Все</button>
+            <button class="filter" data-filter="active">Активные</button>
+            <button class="filter" data-filter="done">Выполненные</button>
+          </div>
+          <select id="sortSelect" aria-label="Сортировка">
+            <option value="deadline">По дедлайну</option>
+            <option value="created">По добавлению</option>
+            <option value="subject">По предмету</option>
+          </select>
+        </div>
+
+        <div id="taskList" class="task-list"></div>
+        <div id="emptyState" class="empty hidden">
+          <div class="empty-icon">✦</div>
+          <h2>Пока пусто</h2>
+          <p>Добавь первое задание кнопкой «+».</p>
+        </div>
+      </section>
+    </main>
+
+    <button id="addBtn" class="fab hidden" aria-label="Добавить задание">+</button>
+  </div>
+
+  <div id="modal" class="modal hidden">
+    <div class="modal-backdrop"></div>
+    <section class="modal-card">
+      <button id="closeModal" class="close" aria-label="Закрыть">×</button>
+      <p class="eyebrow">НОВОЕ ЗАДАНИЕ</p>
+      <h2>Добавить задание</h2>
+      <form id="taskForm">
+        <label>Предмет<input id="subject" required maxlength="80" placeholder="Например: Мат. анализ"></label>
+        <label>Дедлайн<input id="deadline" type="date" required></label>
+        <label>Что нужно сделать?<textarea id="comment" rows="5" maxlength="500" required placeholder="Повторить материал лекции..."></textarea></label>
+        <button class="primary" type="submit">Добавить задание</button>
+      </form>
+    </section>
+  </div>
+
+  <div id="menu" class="context-menu hidden">
+    <button id="editAction">✏️ Редактировать</button>
+    <button id="deleteAction" class="danger">🗑 Удалить</button>
+  </div>
+
+  <!-- Вставь сюда URL и anon key своего Supabase-проекта в app.js -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="app.js"></script>
+</body>
+</html>
