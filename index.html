@@ -5,14 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Мои задания</title>
   <meta name="theme-color" content="#111318" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="app">
     <header class="topbar">
-      <div>
-        <p class="eyebrow">STUDY SPACE</p>
-        <h1>Мои задания</h1>
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M7 4.5h7.2L18 8.3V19a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 6 19V6A1.5 1.5 0 0 1 7.5 4.5Z" stroke="currentColor" stroke-width="1.7"/><path d="M14 4.8V8h3.2M9 12h6M9 15.5h6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+        </div>
+        <div><p class="eyebrow">STUDY SPACE</p><h1>Мои задания</h1></div>
       </div>
       <button id="logoutBtn" class="ghost-btn hidden" title="Выйти">↪</button>
     </header>
@@ -66,6 +69,13 @@
         <label>Предмет<input id="subject" required maxlength="80" placeholder="Например: Мат. анализ"></label>
         <label>Дедлайн<input id="deadline" type="date" required></label>
         <label>Что нужно сделать?<textarea id="comment" rows="5" maxlength="500" required placeholder="Повторить материал лекции..."></textarea></label>
+        <label class="file-label">Файлы
+          <input id="files" type="file" multiple accept=".jpg,.jpeg,.png,.gif,.webp,.heic,.pdf,.doc,.docx,.odt,.txt,.rtf,.xls,.xlsx,.ods,.csv,.ppt,.pptx,.odp,.zip,.rar,.7z" />
+          <span class="file-picker">＋ Выбрать файлы</span>
+          <small>До 10 МБ каждый · PDF, DOC(X), изображения, таблицы и другие документы</small>
+        </label>
+        <div id="selectedFiles" class="selected-files"></div>
+        <div id="attachmentList" class="attachment-list"></div>
         <button class="primary" type="submit">Добавить задание</button>
       </form>
     </section>
